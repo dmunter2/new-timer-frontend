@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Timer from './components/Timer-Holders/Timer';
+import Style from 'styled-components';
+import Header from './components/Header'
+
+
+
+const DIV = Style.div`
+// background-color: #000052;
+height: 100%;
+height: 1000px;
+`
 
 function App() {
+
+  const [times, setTimes] = useState([])
+
+  const addnewTime = time => {
+    setTimes([...times, time ])
+  }
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+    <DIV>
+      <Header />
+
+
+      <Timer times={times} addnewTime={addnewTime}/>
+      
+
+
+
+    </DIV>
   );
 }
 
